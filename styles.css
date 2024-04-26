@@ -30,7 +30,7 @@ textarea {
 }
 
 .diagram-container {
-  position: relative;
+  display: flex;
 }
 
 .table {
@@ -40,6 +40,8 @@ textarea {
   padding: 10px;
 
   position: absolute;
+
+  transform: translate(-50%,0);
 }
 
 .table__attributes {
