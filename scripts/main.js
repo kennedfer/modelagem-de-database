@@ -1,4 +1,4 @@
-import interpreter from "./interpreter.js";
+import interpreter from "./interpreter/interpreter.js";
 
 const codeTextarea = document.getElementById("code-textarea");
 
