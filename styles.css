@@ -35,17 +35,36 @@ textarea {
 
 .table {
   display: block;
-  background-color: rebeccapurple;
+  background-color: #151e23;
+  color: white;
 
-  padding: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+
+  width: 150px;
 
   position: absolute;
 
   transform: translate(-50%,0);
 }
 
+.table__title{
+  text-align: center;
+  color: #dbd1d0;
+
+  padding: 5px;
+}
+
 .table__attributes {
+  background-color: #252f38;
+}
+
+.table__attributes > div{
   display: flex;
   justify-content: space-between;
-  background-color: red;
+
+  padding: 5px 10px;
+}
+
+.attributes__type{
+  color: rgb(132, 132, 132);
 }
