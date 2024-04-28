@@ -1,7 +1,7 @@
 import DiagramElement from "../DiagramElement.js";
 //ELEMENTOS ESTAO CONSIDERANDO LINHAS SEM NADA COMO ATRIBUTOS, NADA APARECE MAS OCUPA ESPAÇO, CORRIG
 
-class TableElement extends DiagramElement{
+class TableElement extends DiagramElement {
   element;
 
   constructor(tableStr) {
@@ -31,14 +31,6 @@ class TableElement extends DiagramElement{
     const tableElement = document.createElement("div");
     tableElement.id = this.title + "-table";
     tableElement.className = "table";
-
-    tableElement.draggable = true;
-
-    //MUDAR O DRAG PRA CLASSE MAE 
-    tableElement.addEventListener("dragend", e => {
-      tableElement.style.left = e.x+"px";
-      tableElement.style.top = e.y+"px";
-    });
 
     const titleElement = document.createElement("h3");
     titleElement.className = "table__title";
@@ -70,6 +62,7 @@ class TableElement extends DiagramElement{
     tableElement.appendChild(attributesContainer);
 
     this.element = tableElement;
+    this.onDragElement(this.element);
     return tableElement;
   }
 
