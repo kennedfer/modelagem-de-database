@@ -1,4 +1,6 @@
-class RelationshipElement extends DiagramElement{
+import DiagramElement from "../DiagramElement.js";
+
+class RelationshipElement extends DiagramElement {
   element;
 
   constructor(tableStr) {
@@ -22,8 +24,8 @@ class RelationshipElement extends DiagramElement{
 
     //MUDAR O DRAG PRA CLASSE MAE 
     tableElement.addEventListener("dragend", e => {
-      tableElement.style.left = e.x+"px";
-      tableElement.style.top = e.y+"px";
+      tableElement.style.left = e.x + "px";
+      tableElement.style.top = e.y + "px";
     });
 
     const titleElement = document.createElement("h3");
@@ -53,4 +55,4 @@ class RelationshipElement extends DiagramElement{
   }
 }
 
-
+export default RelationshipElement;
