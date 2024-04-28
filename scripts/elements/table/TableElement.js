@@ -63,6 +63,7 @@ class TableElement extends DiagramElement {
 
     this.element = tableElement;
     this.onDragElement(this.element);
+
     return tableElement;
   }
 

@@ -20,14 +20,6 @@ class RelationshipElement extends DiagramElement {
     tableElement.id = this.title + "-table";
     tableElement.className = "table";
 
-    tableElement.draggable = true;
-
-    //MUDAR O DRAG PRA CLASSE MAE 
-    tableElement.addEventListener("dragend", e => {
-      tableElement.style.left = e.x + "px";
-      tableElement.style.top = e.y + "px";
-    });
-
     const titleElement = document.createElement("h3");
     titleElement.className = "relationship__title";
     titleElement.id = this.title + "-title";
@@ -36,6 +28,8 @@ class RelationshipElement extends DiagramElement {
     tableElement.appendChild(titleElement);
 
     this.element = tableElement;
+    this.onDragElement(this.element);
+
     return tableElement;
   }
 
