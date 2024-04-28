@@ -1,13 +1,15 @@
-class DiagramElement{
+class DiagramElement {
+  // ELEMENTS_TAG = {
+  //   table: TableElement
+  // }
+
   getIdentifier() {
     return this.title;
   }
 
-  delete(){
+  delete() {
     this.element.remove();
   }
-
-  static createElement(tag, elementStr){
-    return (new ELEMENTS_TAG[tag](elementStr));
-  }
 }
+
+export default DiagramElement;
