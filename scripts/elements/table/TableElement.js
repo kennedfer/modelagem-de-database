@@ -1,3 +1,4 @@
+import DiagramElement from "../DiagramElement.js";
 //ELEMENTOS ESTAO CONSIDERANDO LINHAS SEM NADA COMO ATRIBUTOS, NADA APARECE MAS OCUPA ESPAÇO, CORRIG
 
 class TableElement extends DiagramElement{
@@ -113,3 +114,5 @@ class TableElement extends DiagramElement{
     return this.edit();
   }
 }
+
+export default TableElement;

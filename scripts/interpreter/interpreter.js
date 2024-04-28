@@ -1,4 +1,6 @@
+import DiagramController from "../elements/DiagramController.js";
 
+DiagramController
 // table kenis{
 //   nome varchar
 // }
@@ -6,9 +8,6 @@
 // table aicalica{
 //  kenis varchar
 // }
-const ELEMENTS_TAG = {
-  table: TableElement,
-}
 
 class Interpreter {
   elements = {};
@@ -44,15 +43,15 @@ class Interpreter {
         //ISSO PODE SER LENTO POIS CRIA VARIOS OBJETOS
         //MUDAR DEPOIS PARA CRIAR UM NOVO APENAS SE FOR
         //DE FATO UMA NOVA TABELA
-        
+
         // const tableElement = new TableElement(tableStr);
 
         const elementStrSplit = elementStr.split(" ");
         const tag = elementStrSplit[0]; ///ISSO É LENTO PACAS, LEMBRAR DE MUDAR
-        const elementIdentifier = elementStrSplit[1].replace("{","");
+        const elementIdentifier = elementStrSplit[1].replace("{", "");
 
         elementsOnCode.push(elementIdentifier);
-        const element = DiagramElement.createElement(tag, elementStr);
+        const element = DiagramController.createElement(tag, elementStr);
 
         if (this.elements[elementIdentifier]) {
           this.elements[elementIdentifier].parse(elementStr);
@@ -72,7 +71,7 @@ class Interpreter {
     entriesDeleteds.forEach(entry => {
       const element = entry[1];
       this.elements[entry[0]] = null;
-      
+
       element.delete();
     });
   }
