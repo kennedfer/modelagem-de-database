@@ -17,8 +17,9 @@ class RelationshipElement extends DiagramElement {
 
   create() {
     const tableElement = document.createElement("div");
-    tableElement.id = this.title + "-table";
-    tableElement.className = "table";
+
+    tableElement.id = this.title + "-relationship";
+    tableElement.className = "relationship";
 
     const titleElement = document.createElement("h3");
     titleElement.className = "relationship__title";
