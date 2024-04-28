@@ -11,8 +11,11 @@ class DiagramElement {
     element.draggable = true;
 
     element.addEventListener("dragend", e => {
-      element.style.left = e.x + "px";
-      element.style.top = e.y + "px";
+      const normalizedX = Math.round(e.x / 64) * 64;
+      const normalizedY = Math.round(e.y / 64) * 64;
+
+      element.style.left = normalizedX + "px";
+      element.style.top = normalizedY + "px";
     });
   }
 }
