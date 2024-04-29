@@ -29,7 +29,6 @@ class RelationshipElement extends DiagramElement {
   // relacao s{
   //   k -> c
   // }
-
   calculateLines(relationItens) {
     const firstRelationItem = document.getElementById(relationItens[0].trim() + "-table");
     const lastRelationItem = document.getElementById(relationItens[1].trim() + "-table");
