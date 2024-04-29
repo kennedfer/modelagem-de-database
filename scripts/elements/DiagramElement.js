@@ -10,13 +10,16 @@ class DiagramElement {
   onDragElement(element) {
     element.draggable = true;
 
-    element.addEventListener("dragend", e => {
-      const normalizedX = Math.round(e.x / 64) * 64;
-      const normalizedY = Math.round(e.y / 64) * 64;
+    element.addEventListener("drag", e => {
+      const snapedX = Math.round(e.x / 32) * 32;
+      const snapedY = Math.round(e.y / 32) * 32;
 
-      element.style.left = normalizedX + "px";
-      element.style.top = normalizedY + "px";
+      element.style.left = snapedX + "px";
+      element.style.top = snapedY + "px";
     });
+
+    element.ondrop = e => e.preventDefault();
+    element.ondragover = e => e.preventDefault();
   }
 }
 

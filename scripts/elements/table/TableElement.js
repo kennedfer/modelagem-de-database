@@ -68,8 +68,6 @@ class TableElement extends DiagramElement {
   }
 
   edit() {
-    // const tableElement = document.getElementById(this.title + "-table");
-
     const titleElement = document.getElementById(this.title + "-title");
     titleElement.textContent = this.title;
 
