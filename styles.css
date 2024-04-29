@@ -1,5 +1,5 @@
 :root{
-  --element-width: 128px;
+  --element-width: 192px;
 }
 
 * {
@@ -26,7 +26,6 @@ body {
 main {
   display: grid;
   gap: 10px;
-
 
   grid-template-columns: 1fr 3fr;
 }
@@ -110,4 +109,12 @@ textarea {
 	border-top: 35px solid #ffffff;
 	border-left: 75px solid transparent;
 	border-right:75px solid transparent;
+}
+
+.line{
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  z-index: -1;
 }
