@@ -5,19 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
 
+    <link rel="stylesheet" href="styles/root.css" />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles/ui.css" />
   </head>
   <body>
     <main>
+      <div class="show-code-input" id="show-code-input"></div>
       <div>
         <!-- <textarea name="" id="code-textarea" cols="30" rows="10"></textarea> -->
-        <ol id="code-textarea" contenteditable>
-          <li>aicalica</li>
+
+        <ol class="code" id="code-input" contenteditable>
+          <li>tabela kenis{</li>
+          <li>idade int</li>
+          <li>}</li>
         </ol>
       </div>
-      
+
       <div class="diagram-container" id="res"></div>
     </main>
+
+    <script src="scripts/ui/code.js"></script>
     <script type="module" defer src="scripts/main.js"></script>
   </body>
 </html>

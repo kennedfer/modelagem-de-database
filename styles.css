@@ -1,38 +1,24 @@
-:root{
-  --element-width: 192px;
-  --background-color: #352F44;
-  --table-color: #5C5470;
-  --relationship-color: #B9B4C7;
-  --attributes-type-color: #FAF0E6;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-
-  box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
 body {
   display: grid;
-  padding: 50px;
 
   background-color: var(--background-color);
-  
-  background-image:
-    repeating-linear-gradient(var(--table-color) 0 1px, transparent 1px 100%),
-    repeating-linear-gradient(90deg, var(--table-color) 0 1px, transparent 1px 100%);
+
+  background-image: repeating-linear-gradient(
+      var(--table-color) 0 1px,
+      transparent 1px 100%
+    ),
+    repeating-linear-gradient(
+      90deg,
+      var(--table-color) 0 1px,
+      transparent 1px 100%
+    );
   background-size: 64px 64px;
 
   height: 100svh;
 }
 
 main {
-  display: grid;
-  gap: 10px;
-
-  grid-template-columns: 1fr 3fr;
+  position: relative;
 }
 
 textarea {
@@ -58,11 +44,11 @@ textarea {
   position: absolute;
   translate: -50% 0;
 
-  transition: .2s all;
+  transition: 0.2s all;
   border: 1px solid var(--relationship-color);
 }
 
-.table__title{
+.table__title {
   text-align: center;
   color: #ffffff;
   background-color: var(--background-color);
@@ -74,56 +60,56 @@ textarea {
   background-color: var(--table-color);
 }
 
-.table__attributes > div{
+.table__attributes > div {
   display: flex;
   justify-content: space-between;
 
   padding: 5px 10px;
 }
 
-.attributes__type{
+.attributes__type {
   color: var(--attributes-type-color);
 }
 
-.relationship{
+.relationship {
   position: absolute;
 
   width: var(--element-width);
-	height: 70px;
+  height: 70px;
 
   display: grid;
   place-items: center;
 
-  transform: translate(-50%, -50% );
+  transform: translate(-50%, -50%);
 }
 
-.relationship > h3{
+.relationship > h3 {
   z-index: 10;
   text-align: center;
   color: var(--background-color);
 }
 
-.relationship::after{
-	content:'';
-	position:absolute;
-  
-	bottom: 35px;
-	border-bottom: 35px solid var(--relationship-color);
-	border-left: 75px solid transparent;
-	border-right:75px solid transparent;
+.relationship::after {
+  content: "";
+  position: absolute;
+
+  bottom: 35px;
+  border-bottom: 35px solid var(--relationship-color);
+  border-left: 75px solid transparent;
+  border-right: 75px solid transparent;
 }
 
-.relationship::before{
-  content:'';
-	position: absolute;
-  
-	top: 35px;
-	border-top: 35px solid var(--relationship-color);
-	border-left: 75px solid transparent;
-	border-right:75px solid transparent;
+.relationship::before {
+  content: "";
+  position: absolute;
+
+  top: 35px;
+  border-top: 35px solid var(--relationship-color);
+  border-left: 75px solid transparent;
+  border-right: 75px solid transparent;
 }
 
-.line{
+.line {
   position: absolute;
   top: 0;
   left: 0;

@@ -1,0 +1,15 @@
+:root {
+  --element-width: 192px;
+  --background-color: #352f44;
+  --table-color: #5c5470;
+  --relationship-color: #b9b4c7;
+  --attributes-type-color: #faf0e6;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}

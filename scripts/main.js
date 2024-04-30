@@ -1,10 +1,10 @@
 import interpreter from "./interpreter/interpreter.js";
 
-const codeTextarea = document.getElementById("code-textarea");
+const codeInput = document.getElementById("code-input");
 
-codeTextarea.onblur = function (e) {
+codeInput.onblur = function (e) {
   // const code = e.target.value;
-  const code = Array.from(codeTextarea.children).reduce(
+  const code = Array.from(codeInput.children).reduce(
     (accumulator, currentValue) => accumulator + currentValue.textContent + "\n",
     "",);
 
