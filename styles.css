@@ -39,7 +39,7 @@ textarea {
 
   font-family: Arial, Helvetica, sans-serif;
 
-  width: var(--element-width);
+  /* width: var(--element-width); */
 
   position: absolute;
   translate: -50% 0;
@@ -56,15 +56,21 @@ textarea {
   padding: 5px;
 }
 
-.table__attributes {
-  background-color: var(--table-color);
-}
+/* .table__attributes {
+  border: 1px solid teal;
+} */
 
 .table__attributes > div {
   display: flex;
   justify-content: space-between;
+  gap: 30px;
 
-  padding: 5px 10px;
+  padding: 5px 15px;
+}
+
+.table__attributes > div > span {
+  display: grid;
+  place-items: center;
 }
 
 .attributes__type {
