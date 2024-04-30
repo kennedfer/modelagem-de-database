@@ -3,7 +3,7 @@ import DiagramElement from "../DiagramElement.js";
 class RelationshipElement extends DiagramElement {
   element;
   relationItens;
-  line1;
+  svgContainer;
 
   constructor(relationshipStr) {
     super();
@@ -16,7 +16,6 @@ class RelationshipElement extends DiagramElement {
     this.title = relationshipSplit.shift().split(" ")[1].replace("{", "");
     relationshipSplit.pop();
 
-    // console.log(relationshipSplit);
     this.relationItens = relationshipSplit.shift().split("->");
   }
 
@@ -42,36 +41,29 @@ class RelationshipElement extends DiagramElement {
     const relationItemX = Number(this.element.style.left.replace("px", ""));
     const relationItemY = Number(this.element.style.top.replace("px", ""));
 
-    const line1 = this.line1.children[0];
-    const line2 = this.line1.children[1];
-    line1.setAttributeNS(null, "d", `M ${firstRelationItemX} ${firstRelationItemY} L ${relationItemX} ${relationItemY}`);
-    line2.setAttributeNS(null, "d", `M ${relationItemX} ${relationItemY} L ${lastRelationItemX} ${lastRelationItemY}`);
+    const line = this.svgContainer.children[0];
+    line.setAttributeNS(null, "d", `M ${firstRelationItemX} ${firstRelationItemY} 
+    L ${firstRelationItemX} ${relationItemY} L ${relationItemX} ${relationItemY} 
+    L ${lastRelationItemX} ${relationItemY} L ${lastRelationItemX} ${lastRelationItemY}`);
   }
 
   create() {
-    const line1 = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    const svgContainer = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svgContainer.setAttribute("height", "100%");
+    svgContainer.setAttribute("width", "100%");
+    svgContainer.setAttribute("preserveAspectRatio", "none");
 
-    const path1 = document.createElementNS('http://www.w3.org/2000/svg', 'path')
-    path1.setAttribute("stroke", "black");
-    path1.setAttribute("stroke-width", "2px");
-    path1.setAttribute("fill", "none");
-    line1.setAttribute("class", "line");
+    const line = document.createElementNS('http://www.w3.org/2000/svg', 'path')
+    line.setAttribute("stroke", "#FAF0E6");
+    line.setAttribute("stroke-width", "2px");
+    line.setAttribute("fill", "none");
+    svgContainer.setAttribute("class", "line");
 
-    const path2 = document.createElementNS('http://www.w3.org/2000/svg', 'path')
-    path2.setAttribute("stroke", "black");
-    path2.setAttribute("stroke-width", "2px");
-    path2.setAttribute("fill", "none");
-    line1.setAttribute("class", "line");
+    svgContainer.appendChild(line);
 
-    line1.setAttribute("height", "100%");
-    line1.setAttribute("width", "100%");
-    line1.setAttribute("preserveAspectRatio", "none");
+    document.body.appendChild(svgContainer);
+    this.svgContainer = svgContainer;
 
-    line1.appendChild(path1);
-    line1.appendChild(path2);
-
-    document.body.appendChild(line1);
-    this.line1 = line1;
     const tableElement = document.createElement("div");
 
     tableElement.id = this.title + "-relationship";
