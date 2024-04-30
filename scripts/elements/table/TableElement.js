@@ -2,6 +2,11 @@ import DiagramElement from "../DiagramElement.js";
 //ELEMENTOS ESTAO CONSIDERANDO LINHAS SEM NADA COMO ATRIBUTOS, NADA APARECE MAS OCUPA ESPAÇO, CORRIG
 
 class TableElement extends DiagramElement {
+  KEY_TYPES = {
+    pk: "🔑",
+    fk: "🔗"
+  }
+
   element;
 
   constructor(tableStr) {
@@ -23,6 +28,7 @@ class TableElement extends DiagramElement {
       this.attributes.push({
         name: attributesTuple[0],
         type: attributesTuple[1],
+        key: attributesTuple[2]
       });
     }
   }
@@ -50,8 +56,24 @@ class TableElement extends DiagramElement {
       const atributeTypeElement = document.createElement("span");
       atributeTypeElement.className = "attributes__type";
 
-      atributeNameElement.textContent = atribute.name;
+      const keyPrefix = atribute.key ? this.KEY_TYPES[atribute.key] + " " : "";
+
+      atributeNameElement.textContent = keyPrefix + atribute.name;
       atributeTypeElement.textContent = atribute.type;
+
+      // if (atribute.key) {
+      //   switch (atribute.key) {
+      //     case "pk": {
+      //       atributeNameElement.textContent = "🔑 " + atributeNameElement.textContent;
+      //       break;
+      //     }
+
+      //     case "pk": {
+      //       atributeNameElement.textContent = "🔑 " + atributeNameElement.textContent;
+      //       break;
+      //     }
+      //   }
+      // }
 
       atributeParentElement.appendChild(atributeNameElement);
       atributeParentElement.appendChild(atributeTypeElement);
@@ -85,7 +107,9 @@ class TableElement extends DiagramElement {
       const atributeTypeElement = document.createElement("span");
       atributeTypeElement.className = "attributes__type";
 
-      atributeNameElement.textContent = atribute.name;
+      const keyPrefix = atribute.key ? this.KEY_TYPES[atribute.key] + " " : "";
+
+      atributeNameElement.textContent = keyPrefix + atribute.name;
       atributeTypeElement.textContent = atribute.type;
 
       atributeParentElement.appendChild(atributeNameElement);
