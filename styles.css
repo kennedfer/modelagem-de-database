@@ -1,5 +1,9 @@
 :root{
   --element-width: 192px;
+  --background-color: #352F44;
+  --table-color: #5C5470;
+  --relationship-color: #B9B4C7;
+  --attributes-type-color: #FAF0E6;
 }
 
 * {
@@ -7,17 +11,18 @@
   padding: 0;
 
   box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
   display: grid;
   padding: 50px;
 
-  background-color: rgb(60, 60, 60);
+  background-color: var(--background-color);
   
   background-image:
-    repeating-linear-gradient(#545454 0 1px, transparent 1px 100%),
-    repeating-linear-gradient(90deg, #515151 0 1px, transparent 1px 100%);
+    repeating-linear-gradient(var(--table-color) 0 1px, transparent 1px 100%),
+    repeating-linear-gradient(90deg, var(--table-color) 0 1px, transparent 1px 100%);
   background-size: 64px 64px;
 
   height: 100svh;
@@ -33,6 +38,8 @@ main {
 textarea {
   min-height: 100%;
   min-width: 100%;
+
+  padding: 10px;
 }
 
 .diagram-container {
@@ -41,7 +48,7 @@ textarea {
 
 .table {
   display: block;
-  background-color: #151e23;
+  background-color: var(--table-color);
   color: white;
 
   font-family: Arial, Helvetica, sans-serif;
@@ -50,17 +57,21 @@ textarea {
 
   position: absolute;
   translate: -50% 0;
+
+  transition: .2s all;
+  border: 1px solid var(--relationship-color);
 }
 
 .table__title{
   text-align: center;
-  color: #dbd1d0;
+  color: #ffffff;
+  background-color: var(--background-color);
 
   padding: 5px;
 }
 
 .table__attributes {
-  background-color: #252f38;
+  background-color: var(--table-color);
 }
 
 .table__attributes > div{
@@ -71,7 +82,7 @@ textarea {
 }
 
 .attributes__type{
-  color: rgb(132, 132, 132);
+  color: var(--attributes-type-color);
 }
 
 .relationship{
@@ -89,6 +100,7 @@ textarea {
 .relationship > h3{
   z-index: 10;
   text-align: center;
+  color: var(--background-color);
 }
 
 .relationship::after{
@@ -96,7 +108,7 @@ textarea {
 	position:absolute;
   
 	bottom: 35px;
-	border-bottom: 35px solid #ffffff;
+	border-bottom: 35px solid var(--relationship-color);
 	border-left: 75px solid transparent;
 	border-right:75px solid transparent;
 }
@@ -106,7 +118,7 @@ textarea {
 	position: absolute;
   
 	top: 35px;
-	border-top: 35px solid #ffffff;
+	border-top: 35px solid var(--relationship-color);
 	border-left: 75px solid transparent;
 	border-right:75px solid transparent;
 }
