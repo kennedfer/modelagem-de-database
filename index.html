@@ -3,21 +3,32 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>DB Diagramas</title>
 
     <link rel="stylesheet" href="styles/root.css" />
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="styles/ui.css" />
   </head>
   <body>
+    <header>
+      <button id="change-theme-button">Mudar tema</button>
+    </header>
     <main>
       <div class="show-code-input" id="show-code-input"></div>
       <div>
-        <!-- <textarea name="" id="code-textarea" cols="30" rows="10"></textarea> -->
-
         <ol class="code" id="code-input" contenteditable>
-          <li>tabela kenis{</li>
-          <li>idade int</li>
+          <li>tabela Pessoa{</li>
+          <li>id int pk</li>
+          <li>rg char</li>
+          <li>}</li>
+          <li>tabela Notebook{</li>
+          <li>id int pk</li>
+          <li>rg_dono char fk</li>
+          <li>}</li>
+          <li>relacao tem{</li>
+          <li>Pessoa -> Notebook</li>
+          <li>0:n</li>
+          <li>0:1</li>
           <li>}</li>
         </ol>
       </div>
@@ -25,6 +36,7 @@
       <div class="diagram-container" id="res"></div>
     </main>
 
+    <script src="scripts/ui/header.js"></script>
     <script src="scripts/ui/code.js"></script>
     <script type="module" defer src="scripts/main.js"></script>
   </body>
