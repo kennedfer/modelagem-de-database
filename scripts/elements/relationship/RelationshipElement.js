@@ -107,6 +107,12 @@ class RelationshipElement extends DiagramElement {
     this.element = tableElement;
     console.log(this.relationItens);
 
+    const firstRelationItem = document.getElementById(this.relationItens[0].trim() + "-table");
+    firstRelationItem.addEventListener("drag", () => this.calculateLines(this.relationItens));
+
+    const lastRelationItem = document.getElementById(this.relationItens[1].trim() + "-table");
+    lastRelationItem.addEventListener("drag", () => this.calculateLines(this.relationItens));
+
     this.element.addEventListener("drag", () => this.calculateLines(this.relationItens));
     this.onDragElement(this.element);
 
