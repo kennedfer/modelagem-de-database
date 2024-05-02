@@ -43,6 +43,8 @@ li::before {
   position: absolute;
   left: 0;
 
+  z-index: 10;
+
   padding: 10px;
 
   overflow-y: scroll;

@@ -27,12 +27,26 @@ textarea {
 
 .diagram-container {
   display: flex;
+
+  background-color: red;
 }
 
 .table,
 .relationship,
 path {
-  transition: 0.5s all;
+  transition: 0.25s all;
+}
+
+path {
+  fill: none;
+  stroke: var(--relationship-color);
+  stroke-width: 2px;
+  stroke-linejoin: round;
+
+  filter: drop-shadow(-1px -1px 0px var(--table-color))
+    drop-shadow(1px -1px 0px var(--table-color))
+    drop-shadow(2px 2px 0px var(--table-color))
+    drop-shadow(-1px 1px 0px var(--table-color));
 }
 
 .table {
@@ -52,6 +66,8 @@ path {
 
 .table__title {
   text-align: center;
+  text-transform: capitalize;
+
   color: var(--text-color);
   background-color: var(--background-color);
 
@@ -90,6 +106,8 @@ path {
   place-items: center;
 
   transform: translate(-50%, -50%);
+  text-transform: uppercase;
+  font-size: 12px;
 }
 
 .relationship > h3 {
