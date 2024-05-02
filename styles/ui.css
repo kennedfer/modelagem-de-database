@@ -1,3 +1,16 @@
+header {
+  display: flex;
+  flex-direction: row-reverse;
+
+  position: sticky;
+  background-color: var(--table-color);
+  padding: 5px;
+}
+
+button {
+  padding: 5px;
+}
+
 .show-code-input {
   width: 10px;
   height: 100%;

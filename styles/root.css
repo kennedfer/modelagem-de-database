@@ -1,9 +1,19 @@
-:root {
-  --element-width: 192px;
+html[theme="light"] {
+  --background-color: #fafafa;
+  --table-color: #e4e5f1;
+  --relationship-color: #d2d3db;
+  --attributes-type-color: #484b6a;
+
+  --text-color: #534b67;
+}
+
+html[theme="dark"] {
   --background-color: #352f44;
   --table-color: #5c5470;
   --relationship-color: #faf0e6;
   --attributes-type-color: #faf0e6;
+
+  --text-color: white;
 }
 
 * {
@@ -12,4 +22,7 @@
 
   box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
+
+  transition-duration: 1s;
+  transition-property: color, background-color;
 }
