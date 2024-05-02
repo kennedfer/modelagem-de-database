@@ -3,7 +3,12 @@ import DiagramElement from "../DiagramElement.js";
 class RelationshipElement extends DiagramElement {
   element;
   relationItens;
+
+  cardinalityLastToFirst;
+  cardinalityFirstToLast;
+
   svgContainer;
+  cardinalities = [];
 
   constructor(relationshipStr) {
     super();
@@ -17,6 +22,7 @@ class RelationshipElement extends DiagramElement {
     relationshipSplit.pop();
 
     this.relationItens = relationshipSplit.shift().split("->");
+    this.cardinalities = relationshipSplit.map(line => line.trim());
   }
 
   // tabela k{
@@ -45,9 +51,18 @@ class RelationshipElement extends DiagramElement {
     line.setAttributeNS(null, "d", `M ${firstRelationItemX} ${firstRelationItemY} 
     L ${firstRelationItemX} ${relationItemY} L ${relationItemX} ${relationItemY} 
     L ${lastRelationItemX} ${relationItemY} L ${lastRelationItemX} ${lastRelationItemY}`);
+
+    this.cardinalityLastToFirst.textContent = this.cardinalities[0];
+    this.cardinalityFirstToLast.textContent = this.cardinalities[1];
+
+    this.cardinalityLastToFirst.style.top = relationItemY + "px";
+    this.cardinalityLastToFirst.style.left = firstRelationItemX + "px";
+
+    this.cardinalityFirstToLast.style.top = relationItemY + "px";
+    this.cardinalityFirstToLast.style.left = lastRelationItemX + "px";
   }
 
-  create() {
+  createLines() {
     const svgContainer = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     svgContainer.setAttribute("height", "100%");
     svgContainer.setAttribute("width", "100%");
@@ -63,6 +78,19 @@ class RelationshipElement extends DiagramElement {
 
     document.body.appendChild(svgContainer);
     this.svgContainer = svgContainer;
+  }
+
+  create() {
+    this.createLines();
+
+    this.cardinalityLastToFirst = document.createElement("span");
+    this.cardinalityFirstToLast = document.createElement("span");
+
+    this.cardinalityFirstToLast.className = "cardinality-label";
+    this.cardinalityLastToFirst.className = "cardinality-label";
+
+    document.body.appendChild(this.cardinalityFirstToLast);
+    document.body.appendChild(this.cardinalityLastToFirst);
 
     const tableElement = document.createElement("div");
 
@@ -78,6 +106,7 @@ class RelationshipElement extends DiagramElement {
 
     this.element = tableElement;
     console.log(this.relationItens);
+
     this.element.addEventListener("drag", () => this.calculateLines(this.relationItens));
     this.onDragElement(this.element);
 
