@@ -93,7 +93,7 @@ class TableElement extends DiagramElement {
       this.title + "-attributes"
     );
 
-    attributesContainer.innerHTML = "";
+    while (attributesContainer.firstChild) attributesContainer.removeChild(attributesContainer.firstChild);
     this.#createAttributes(attributesContainer);
 
     return this.element;
