@@ -34,7 +34,7 @@ class TableElement extends DiagramElement {
   }
 
   #getKeySymbol(key) {
-    const symbol = this.KEY_TYPES[atribute.key];
+    const symbol = this.KEY_TYPES[key];
     return symbol ? symbol + " " : "";
   }
 
@@ -46,9 +46,9 @@ class TableElement extends DiagramElement {
       const atributeTypeElement = document.createElement("span");
       atributeTypeElement.className = "attributes__type";
 
-      const keyPrefix =
+      const keyPrefix = this.#getKeySymbol(atribute.key);
 
-        atributeNameElement.textContent = keyPrefix + atribute.name;
+      atributeNameElement.textContent = keyPrefix + atribute.name;
       atributeTypeElement.textContent = atribute.type;
 
       atributeParentElement.appendChild(atributeNameElement);
