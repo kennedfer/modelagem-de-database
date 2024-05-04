@@ -1,5 +1,4 @@
 import DiagramElement from "../DiagramElement.js";
-//ELEMENTOS ESTAO CONSIDERANDO LINHAS SEM NADA COMO ATRIBUTOS, NADA APARECE MAS OCUPA ESPAÇO, CORRIG
 
 class TableElement extends DiagramElement {
   KEY_TYPES = {
@@ -16,6 +15,8 @@ class TableElement extends DiagramElement {
 
   #createAttributes(attributesContainer) {
     for (let attribute of this.attributes) {
+      if (attribute.name == "") continue;
+
       const attributeParentElement = document.createElement("div");
 
       const attributeNameElement = document.createElement("span");
