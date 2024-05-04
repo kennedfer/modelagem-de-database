@@ -33,6 +33,31 @@ class TableElement extends DiagramElement {
     }
   }
 
+  #getKeySymbol(key) {
+    const symbol = this.KEY_TYPES[atribute.key];
+    return symbol ? symbol + " " : "";
+  }
+
+  #createAttributes(attributesContainer) {
+    for (let atribute of this.attributes) {
+      const atributeParentElement = document.createElement("div");
+
+      const atributeNameElement = document.createElement("span");
+      const atributeTypeElement = document.createElement("span");
+      atributeTypeElement.className = "attributes__type";
+
+      const keyPrefix =
+
+        atributeNameElement.textContent = keyPrefix + atribute.name;
+      atributeTypeElement.textContent = atribute.type;
+
+      atributeParentElement.appendChild(atributeNameElement);
+      atributeParentElement.appendChild(atributeTypeElement);
+
+      attributesContainer.appendChild(atributeParentElement);
+    }
+  }
+
   create() {
     const tableElement = document.createElement("div");
     tableElement.id = this.title + "-table";
@@ -49,38 +74,7 @@ class TableElement extends DiagramElement {
     attributesContainer.className = "table__attributes";
     attributesContainer.id = this.title + "-attributes";
 
-    for (let atribute of this.attributes) {
-      const atributeParentElement = document.createElement("div");
-
-      const atributeNameElement = document.createElement("span");
-      const atributeTypeElement = document.createElement("span");
-      atributeTypeElement.className = "attributes__type";
-
-      const keyPrefix = atribute.key ? this.KEY_TYPES[atribute.key] + " " : "";
-
-      atributeNameElement.textContent = keyPrefix + atribute.name;
-      atributeTypeElement.textContent = atribute.type;
-
-      // if (atribute.key) {
-      //   switch (atribute.key) {
-      //     case "pk": {
-      //       atributeNameElement.textContent = "🔑 " + atributeNameElement.textContent;
-      //       break;
-      //     }
-
-      //     case "pk": {
-      //       atributeNameElement.textContent = "🔑 " + atributeNameElement.textContent;
-      //       break;
-      //     }
-      //   }
-      // }
-
-      atributeParentElement.appendChild(atributeNameElement);
-      atributeParentElement.appendChild(atributeTypeElement);
-
-      attributesContainer.appendChild(atributeParentElement);
-    }
-
+    this.#createAttributes(attributesContainer);
     tableElement.appendChild(attributesContainer);
 
     this.element = tableElement;
@@ -98,27 +92,8 @@ class TableElement extends DiagramElement {
     );
 
     attributesContainer.innerHTML = "";
+    this.#createAttributes(attributesContainer);
 
-    for (let atribute of this.attributes) {
-      const atributeParentElement = document.createElement("div");
-      atributeParentElement.className = "table__attributes";
-
-      const atributeNameElement = document.createElement("span");
-      const atributeTypeElement = document.createElement("span");
-      atributeTypeElement.className = "attributes__type";
-
-      const keyPrefix = atribute.key ? this.KEY_TYPES[atribute.key] + " " : "";
-
-      atributeNameElement.textContent = keyPrefix + atribute.name;
-      atributeTypeElement.textContent = atribute.type;
-
-      atributeParentElement.appendChild(atributeNameElement);
-      atributeParentElement.appendChild(atributeTypeElement);
-
-      attributesContainer.appendChild(atributeParentElement);
-    }
-
-    console.log(attributesContainer);
     return this.element;
   }
 
