@@ -9,6 +9,31 @@ class TableElement extends DiagramElement {
 
   element;
 
+  #getKeySymbol(key) {
+    const symbol = this.KEY_TYPES[key];
+    return symbol ? (symbol + " ") : "";
+  }
+
+  #createAttributes(attributesContainer) {
+    for (let attribute of this.attributes) {
+      const attributeParentElement = document.createElement("div");
+
+      const attributeNameElement = document.createElement("span");
+      const attributeTypeElement = document.createElement("span");
+      attributeTypeElement.className = "attributes__type";
+
+      const keyPrefix = this.#getKeySymbol(attribute.key);
+
+      attributeNameElement.textContent = keyPrefix + attribute.name;
+      attributeTypeElement.textContent = attribute.type;
+
+      attributeParentElement.appendChild(attributeNameElement);
+      attributeParentElement.appendChild(attributeTypeElement);
+
+      attributesContainer.appendChild(attributeParentElement);
+    }
+  }
+
   constructor(tableStr) {
     super();
     this.parse(tableStr);
@@ -16,14 +41,15 @@ class TableElement extends DiagramElement {
 
   parse(tableStr) {
     const tableSplit = tableStr.split("\n");
+    const tableTitle = tableSplit.shift().split(" ")[1];
 
-    this.title = tableSplit.shift().split(" ")[1].replace("{", "");
+    this.title = tableTitle.substring(0, tableTitle.length - 1);
     tableSplit.pop();
 
     this.attributes = [];
 
-    for (let atribute of tableSplit) {
-      const attributesTuple = atribute.trim().split(" ");
+    for (let attribute of tableSplit) {
+      const attributesTuple = attribute.trim().split(" ");
 
       this.attributes.push({
         name: attributesTuple[0],
@@ -33,30 +59,6 @@ class TableElement extends DiagramElement {
     }
   }
 
-  #getKeySymbol(key) {
-    const symbol = this.KEY_TYPES[key];
-    return symbol ? symbol + " " : "";
-  }
-
-  #createAttributes(attributesContainer) {
-    for (let atribute of this.attributes) {
-      const atributeParentElement = document.createElement("div");
-
-      const atributeNameElement = document.createElement("span");
-      const atributeTypeElement = document.createElement("span");
-      atributeTypeElement.className = "attributes__type";
-
-      const keyPrefix = this.#getKeySymbol(atribute.key);
-
-      atributeNameElement.textContent = keyPrefix + atribute.name;
-      atributeTypeElement.textContent = atribute.type;
-
-      atributeParentElement.appendChild(atributeNameElement);
-      atributeParentElement.appendChild(atributeTypeElement);
-
-      attributesContainer.appendChild(atributeParentElement);
-    }
-  }
 
   create() {
     const tableElement = document.createElement("div");
