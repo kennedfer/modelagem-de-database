@@ -47,7 +47,7 @@ class RelationshipElement extends DiagramElement {
     const relationItemX = Number(this.element.style.left.replace("px", ""));
     const relationItemY = Number(this.element.style.top.replace("px", ""));
 
-    const line = this.svgContainer.children[0];
+    const line = this.relationshipLine;
     line.setAttributeNS(null, "d", `M ${firstRelationItemX} ${firstRelationItemY} 
     L ${firstRelationItemX} ${relationItemY} L ${relationItemX} ${relationItemY} 
     L ${lastRelationItemX} ${relationItemY} L ${lastRelationItemX} ${lastRelationItemY}`);
@@ -63,20 +63,11 @@ class RelationshipElement extends DiagramElement {
   }
 
   createLines() {
-    const svgContainer = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    svgContainer.setAttribute("height", "100%");
-    svgContainer.setAttribute("width", "100%");
-    svgContainer.setAttribute("preserveAspectRatio", "none");
-
     const line = document.createElementNS('http://www.w3.org/2000/svg', 'path')
-    line.setAttribute("stroke", "#FAF0E6");
-    line.setAttribute("stroke-width", "2px");
-    line.setAttribute("fill", "none");
-    svgContainer.setAttribute("class", "line");
-
+    const svgContainer = document.getElementById("svg-container");
     svgContainer.appendChild(line);
 
-    document.body.appendChild(svgContainer);
+    this.relationshipLine = line;
     this.svgContainer = svgContainer;
   }
 
