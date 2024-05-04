@@ -18,8 +18,8 @@ class DiagramElement {
       element.style.top = snapedY + "px";
     });
 
-    element.ondrop = e => e.preventDefault();
-    element.ondragover = e => e.preventDefault();
+    document.body.ondrop = e => e.preventDefault();
+    document.body.ondragover = e => e.preventDefault();
   }
 }
 
