@@ -99,14 +99,6 @@ class TableElement extends DiagramElement {
 
     return this.element;
   }
-
-  show() {
-    if (!this.element) {
-      return this.create();
-    }
-
-    return this.edit();
-  }
 }
 
 export default TableElement;
