@@ -6,14 +6,19 @@ function restoreThemeSaved() {
   document.documentElement.setAttribute("theme", theme);
 }
 
-function changeTheme() {
+function changeTheme(event) {
   const currentTheme = document.documentElement.getAttribute("theme");
+
+  const themeIcon = event.srcElement;
+
   let targetTheme = "light";
 
   if (currentTheme === "light") {
     targetTheme = "dark";
+    themeIcon.src = `../../assets/icons/dark-theme-icon.png`;
   } else {
     targetTheme = "light";
+    themeIcon.src = `../../assets/icons/light-theme-icon.png`;
   }
 
   localStorage.setItem("theme", targetTheme);
