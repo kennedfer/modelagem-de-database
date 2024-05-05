@@ -44,7 +44,7 @@ class TableElement extends DiagramElement {
     const tableSplit = tableStr.split("\n");
     const tableTitle = tableSplit.shift().split(" ")[1];
 
-    this.title = tableTitle.substring(0, tableTitle.length - 1);
+    this.title = tableTitle.slice(0, -1);
     tableSplit.pop();
 
     this.attributes = [];
