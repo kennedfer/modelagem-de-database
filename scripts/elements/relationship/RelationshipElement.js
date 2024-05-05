@@ -7,7 +7,6 @@ class RelationshipElement extends DiagramElement {
   cardinalityLastToFirst;
   cardinalityFirstToLast;
 
-  svgContainer;
   cardinalities = [];
 
   constructor(relationshipStr) {
@@ -17,23 +16,15 @@ class RelationshipElement extends DiagramElement {
 
   parse(relationshipStr) {
     const relationshipSplit = relationshipStr.split("\n");
+    const relationshipTitle = relationshipSplit.shift().split(" ")[1];
 
-    this.title = relationshipSplit.shift().split(" ")[1].replace("{", "");
+    this.title = relationshipTitle.substring(0, relationshipTitle.length - 1);
     relationshipSplit.pop();
 
     this.relationItens = relationshipSplit.shift().split("->");
     this.cardinalities = relationshipSplit.map(line => line.trim());
   }
 
-  // tabela k{
-  // }
-
-  // tabela c{
-  // }
-
-  // relacao s{
-  //   k -> c
-  // }
   calculateLines(relationItens) {
     const firstRelationItem = document.getElementById(relationItens[0].trim() + "-table");
     const lastRelationItem = document.getElementById(relationItens[1].trim() + "-table");
@@ -68,7 +59,6 @@ class RelationshipElement extends DiagramElement {
     svgContainer.appendChild(line);
 
     this.relationshipLine = line;
-    this.svgContainer = svgContainer;
   }
 
   create() {

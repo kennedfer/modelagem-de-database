@@ -1,27 +1,7 @@
 import DiagramController from "../elements/DiagramController.js";
 
-DiagramController
-// table kenis{
-//   nome varchar
-// }
-
-// table aicalica{
-//  kenis varchar
-// }
-
 class Interpreter {
   elements = {};
-
-  // show() {
-  //   const parentElement = document.getElementById("res");
-  //   // parentElement.innerHTML = ""; //APAGANDO TUDO DO PANEL
-  //   const elements = Object.values(this.elements);
-
-  //   for (let element of elements) {
-  //     // console.log(table);
-  //     element.show();
-  //   }
-  // }
 
   interpret(code) {
     this.tableBlocks = [];
@@ -40,25 +20,22 @@ class Interpreter {
         const elementStr = code.substring(lastCloseIndex, index).trim();
         lastCloseIndex = index;
 
-        //ISSO PODE SER LENTO POIS CRIA VARIOS OBJETOS
-        //MUDAR DEPOIS PARA CRIAR UM NOVO APENAS SE FOR
-        //DE FATO UMA NOVA TABELA
-
-        // const tableElement = new TableElement(tableStr);
-
         const elementStrSplit = elementStr.split(" ");
-        const tag = elementStrSplit[0]; ///ISSO É LENTO PACAS, LEMBRAR DE MUDAR
-        const elementIdentifier = elementStrSplit[1].replace("{", "");
+        const elementTag = elementStrSplit[0];
+        let elementIdentifier = elementStrSplit[1];
+        elementIdentifier = elementIdentifier.substring(0, elementIdentifier.length - 1);
 
         elementsOnCode.push(elementIdentifier);
-        const element = DiagramController.createElement(tag, elementStr);
+        const elementFromObject = this.elements[elementIdentifier];
 
-        if (this.elements[elementIdentifier]) {
-          this.elements[elementIdentifier].parse(elementStr);
-          this.elements[elementIdentifier].edit();
+        if (elementFromObject) {
+          elementFromObject.parse(elementStr);
+          elementFromObject.edit();
         } else {
-          this.elements[elementIdentifier] = element;
-          parentElement.appendChild(element.show());
+          const newElement = DiagramController.createElement(elementTag, elementStr);
+
+          this.elements[elementIdentifier] = newElement;
+          parentElement.appendChild(newElement.create());
         }
       }
     }
@@ -78,5 +55,4 @@ class Interpreter {
 }
 
 const interpreter = new Interpreter();
-
 export default interpreter;

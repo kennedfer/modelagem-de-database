@@ -1,5 +1,6 @@
 .table,
 .relationship,
+.cardinality-label,
 path {
   transition: 0.25s all;
 }
@@ -39,10 +40,6 @@ path {
 
   padding: 5px;
 }
-
-/* .table__attributes {
-  border: 1px solid teal;
-} */
 
 .table__attributes > div {
   display: flex;
