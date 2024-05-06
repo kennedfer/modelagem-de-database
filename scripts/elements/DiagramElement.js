@@ -7,6 +7,14 @@ class DiagramElement {
     this.element.remove();
   }
 
+  setElement(element) {
+    this.element = element;
+    this.onDragElement(element);
+
+    this.element.style.top = "50%";
+    this.element.style.left = "50%";
+  }
+
   onDragElement(element) {
     element.draggable = true;
 
