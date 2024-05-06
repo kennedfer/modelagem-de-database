@@ -85,26 +85,26 @@ class RelationshipElement extends DiagramElement {
     document.body.appendChild(this.cardinalityFirstToLast);
     document.body.appendChild(this.cardinalityLastToFirst);
 
-    const tableElement = document.createElement("div");
+    const relationshipElement = document.createElement("div");
 
-    tableElement.id = this.title + "-relationship";
-    tableElement.className = "relationship";
+    relationshipElement.id = this.title + "-relationship";
+    relationshipElement.className = "relationship";
 
     const titleElement = document.createElement("h3");
     titleElement.className = "relationship__title";
     titleElement.id = this.title + "-title";
 
     titleElement.textContent = this.title;
-    tableElement.appendChild(titleElement);
+    relationshipElement.appendChild(titleElement);
 
-    this.element = tableElement;
+    this.setElement(relationshipElement);
 
     this.#applyDragEventToRelationTables();
 
     this.element.addEventListener("drag", () => this.calculateLines(this.relationItens));
-    this.onDragElement(this.element);
 
-    return tableElement;
+
+    return relationshipElement;
   }
 
   edit() {

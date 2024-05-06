@@ -80,8 +80,7 @@ class TableElement extends DiagramElement {
     this.#createAttributes(attributesContainer);
     tableElement.appendChild(attributesContainer);
 
-    this.element = tableElement;
-    this.onDragElement(this.element);
+    this.setElement(tableElement);
 
     return tableElement;
   }
