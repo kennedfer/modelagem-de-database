@@ -49,7 +49,7 @@ class Interpreter {
       const element = entry[1];
       this.elements[entry[0]] = null;
 
-      element.delete();
+      if (element) element.delete();
     });
   }
 }

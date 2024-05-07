@@ -23,16 +23,18 @@ class RelationshipElement extends DiagramElement {
     this.relationshipLine = line;
   }
 
-  #dragEvent() {
-
-  };
-
   #applyDragEventToRelationTables() {
-    const firstRelationItem = document.getElementById(this.relationItens[0].trim() + "-table");
-    firstRelationItem.ondrag = () => this.calculateLines(this.relationItens)
+    try {
 
-    const lastRelationItem = document.getElementById(this.relationItens[1].trim() + "-table");
-    lastRelationItem.ondrag = () => this.calculateLines(this.relationItens);
+
+      const firstRelationItem = document.getElementById(this.relationItens[0].trim() + "-table");
+      firstRelationItem.ondrag = () => this.calculateLines(this.relationItens)
+
+      const lastRelationItem = document.getElementById(this.relationItens[1].trim() + "-table");
+      lastRelationItem.ondrag = () => this.calculateLines(this.relationItens);
+    } catch (error) {
+      // 
+    }
   }
 
   #updateCardinalitiesText() {
@@ -41,14 +43,18 @@ class RelationshipElement extends DiagramElement {
   }
 
   parse(relationshipStr) {
-    const relationshipSplit = relationshipStr.split("\n");
-    const relationshipTitle = (relationshipSplit.shift()).split(" ")[1];
+    try {
+      const relationshipSplit = relationshipStr.split("\n");
+      const relationshipTitle = (relationshipSplit.shift()).split(" ")[1];
 
-    this.title = relationshipTitle.slice(0, -1);
-    relationshipSplit.pop();
+      this.title = relationshipTitle.slice(0, -1);
+      relationshipSplit.pop();
 
-    this.relationItens = relationshipSplit.shift().split("->");
-    this.cardinalities = relationshipSplit.map(line => line.trim());
+      this.relationItens = relationshipSplit.shift().split("->");
+      this.cardinalities = relationshipSplit.map(line => line.trim());
+    } catch (e) {
+      // console.log(e);
+    }
   }
 
   calculateLines(relationItens) {
