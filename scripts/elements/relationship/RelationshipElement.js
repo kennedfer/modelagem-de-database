@@ -25,15 +25,13 @@ class RelationshipElement extends DiagramElement {
 
   #applyDragEventToRelationTables() {
     try {
-
-
       const firstRelationItem = document.getElementById(this.relationItens[0].trim() + "-table");
       firstRelationItem.ondrag = () => this.calculateLines(this.relationItens)
 
       const lastRelationItem = document.getElementById(this.relationItens[1].trim() + "-table");
       lastRelationItem.ondrag = () => this.calculateLines(this.relationItens);
     } catch (error) {
-      // 
+      // FAZER O CODE DE ERRO
     }
   }
 
@@ -76,10 +74,10 @@ class RelationshipElement extends DiagramElement {
 
     this.#updateCardinalitiesText();
 
-    this.cardinalityLastToFirst.style.top = `${relationItemY}px`;
+    this.cardinalityLastToFirst.style.top = `${relationItemY + 42}px`;
     this.cardinalityLastToFirst.style.left = `${firstRelationItemX}px`;
 
-    this.cardinalityFirstToLast.style.top = `${relationItemY}px`;
+    this.cardinalityFirstToLast.style.top = `${relationItemY + 42}px`;
     this.cardinalityFirstToLast.style.left = `${lastRelationItemX}px`;
   }
 

@@ -40,18 +40,5 @@ body {
   display: flex;
   flex-direction: column;
 
-  background-color: var(--background-color);
-
-  background-image: repeating-linear-gradient(
-      var(--table-color) 0 1px,
-      transparent 1px 100%
-    ),
-    repeating-linear-gradient(
-      90deg,
-      var(--table-color) 0 1px,
-      transparent 1px 100%
-    );
-  background-size: 64px 64px;
-
   height: 100svh;
 }

@@ -19,8 +19,8 @@ class DiagramElement {
     element.draggable = true;
 
     element.addEventListener("drag", e => {
-      const snapedX = Math.round(e.x / 32) * 32;
-      const snapedY = Math.round(e.y / 32) * 32;
+      const snapedX = Math.round(e.x / 32) * 32 - 32;
+      const snapedY = Math.round(e.y / 32) * 32 - 32;
 
       element.style.left = snapedX + "px";
       element.style.top = snapedY + "px";

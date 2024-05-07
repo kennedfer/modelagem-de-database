@@ -5,6 +5,25 @@ path {
   transition: 0.25s all;
 }
 
+.diagram-container {
+  background-color: var(--background-color);
+
+  background-image: repeating-linear-gradient(
+      var(--table-color) 0 1px,
+      transparent 1px 100%
+    ),
+    repeating-linear-gradient(
+      90deg,
+      var(--table-color) 0 1px,
+      transparent 1px 100%
+    );
+  background-size: 64px 64px;
+
+  z-index: 0;
+  height: 100vh;
+  position: relative;
+}
+
 path {
   fill: none;
   stroke: var(--relationship-color);
