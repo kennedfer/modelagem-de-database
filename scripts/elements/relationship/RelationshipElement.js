@@ -23,12 +23,16 @@ class RelationshipElement extends DiagramElement {
     this.relationshipLine = line;
   }
 
+  #dragEvent() {
+
+  };
+
   #applyDragEventToRelationTables() {
     const firstRelationItem = document.getElementById(this.relationItens[0].trim() + "-table");
-    firstRelationItem.addEventListener("drag", () => this.calculateLines(this.relationItens));
+    firstRelationItem.ondrag = () => this.calculateLines(this.relationItens)
 
     const lastRelationItem = document.getElementById(this.relationItens[1].trim() + "-table");
-    lastRelationItem.addEventListener("drag", () => this.calculateLines(this.relationItens));
+    lastRelationItem.ondrag = () => this.calculateLines(this.relationItens);
   }
 
   #updateCardinalitiesText() {
@@ -98,7 +102,6 @@ class RelationshipElement extends DiagramElement {
     relationshipElement.appendChild(titleElement);
 
     this.setElement(relationshipElement);
-
     this.#applyDragEventToRelationTables();
 
     this.element.addEventListener("drag", () => this.calculateLines(this.relationItens));
